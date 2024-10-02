@@ -126,7 +126,6 @@ const Home = () => {
             <div className="border-t border-gray-200 p-4 relative">
               <div className="flex items-center">
                 <InputEmoji
-                  background='transparent'
                   theme="auto"
                   className="input-emoji dark:bg-transparent"
                   value={textAreaContent}
@@ -204,7 +203,7 @@ const Home = () => {
                     <div className="p-4 border-t border-gray-200 dark:border-gray-700">
                       <div className="flex items-center space-x-3">
                         <InputEmoji
-                          background='transparent'
+                          // background='gray'
                           border="none"
                           theme="auto"
                           className="input-emoji"
@@ -269,7 +268,6 @@ const Home = () => {
                     <div className="p-4 border-t border-gray-200 dark:border-gray-700">
                       <div className="flex items-center space-x-3">
                         <InputEmoji
-                          background='transparent'
                           border="none"
                           theme="auto"
                           className="input-emoji"

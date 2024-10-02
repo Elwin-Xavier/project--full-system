@@ -75,13 +75,13 @@ const Create_events = () => {
                     </div>
                     <div>
                         <label htmlFor="date" className="block mb-2 text-md font-medium  dark:text-white">Event Date</label>
-                        <input type="date" id="date" className="bg-transparent border border-gray-300  text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" pattern="[YYYY]-[MM]-[DD]" {...register("date", { required: "Event date is required" })} />
+                        <input type="text" id="date" className="bg-transparent border border-gray-300  text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  {...register("date", { required: "Event date is required" })} placeholder='Enter Event date' />
                         {errors.date && <p className="text-red-500 text-xs mt-1">{errors.date.message}</p>}
                     </div>
                     <div>
                         <label htmlFor="time" className="block mb-2 text-md font-medium  dark:text-white">Event Time</label>
-                        <input type="time" id="time" className="bg-transparent border border-gray-300  text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            {...register("time", { required: "Event time is required" })} />
+                        <input type="text" id="time" className="bg-transparent border border-gray-300  text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            {...register("time", { required: "Event time is required" })} placeholder='Enter Event time'/>
                         {errors.time && <p className="text-red-500 text-xs mt-1">{errors.time.message}</p>}
                     </div>
                     <div>

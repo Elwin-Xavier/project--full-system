@@ -41,16 +41,13 @@ const SigninForm = () => {
       setLoading(false)
     }
   }
-  const backgroundStyle = {
-    backgroundImage: 'url(https://readymadeui.com/background-image.webp)',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-  };
+
 
   return (
-    <div className="flex items-center justify-center min-h-screen"
+    <div className="flex items-center justify-center min-h-screen bg-no-repeat bg-cover bg-center"
       style={{ backgroundImage: `url(${imageData('login')})` }}>
-      <div className="mx-auto max-w-screen-xl justify-center z-10 bg-gray-300 bg-opacity-75 rounded-lg px-4 py-16 sm:px-6 lg:px-8">
+         <div className="absolute inset-0 bg-black opacity-60"></div>
+      <div className="mx-auto max-w-screen-xl justify-center z-10 bg-gray-100 bg-opacity-75 rounded-lg px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg">
           <h1 className="text-center text-2xl font-bold sm:text-3xl">Welcome Back</h1>
 
@@ -66,7 +63,7 @@ const SigninForm = () => {
               <div className="relative">
                 <input
                   type="text"
-                  className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  className="w-full rounded-lg border border-gray-200 bg-gray-100 p-4 pe-12 text-md shadow-sm"
                   placeholder="Enter email or phone number"
                   {...register("emailOrPhone", {
                     required: true
@@ -80,7 +77,7 @@ const SigninForm = () => {
 
             <div className="flex items-center justify-between">
               <div className="flex items-start"></div>
-              <Link to="/forgot-password-email" className="text-md font-medium text-blue-600 hover:underline dark:text-blue-500">Forgot password?</Link>
+              <Link to="/forgot-password-email" className="text-md font-medium text-blue-700 hover:underline dark:text-blue-600">Forgot password?</Link>
             </div>
 
             <div>
@@ -88,7 +85,7 @@ const SigninForm = () => {
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  className="w-full rounded-lg border border-gray-200 bg-gray-100 p-4 pe-12 text-md shadow-sm"
                   placeholder="Enter password"
                   {...register("password", {
                     required: true,

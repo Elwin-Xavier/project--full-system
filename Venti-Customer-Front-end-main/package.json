@@ -40,7 +40,7 @@
     "react-webcam": "^7.2.0",
     "remixicon": "^4.2.0",
     "rsuite": "^5.69.0",
-    "sweetalert2": "^11.12.4"
+    "sweetalert2": "^11.6.13"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

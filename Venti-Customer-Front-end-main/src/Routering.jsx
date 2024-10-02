@@ -35,60 +35,66 @@ import Event_readmore from "./dashboard_module/all_users-dashboard/event/event_r
 import Events_layout from "./dashboard_module/all_users-dashboard/event/events_layout";
 import My_events from "./dashboard_module/all_users-dashboard/event/my_events";
 import Creator_uploads from "./dashboard_module/all_users-dashboard/unique_to_users/creator_uploads";
-
 import Edit_profile from "./dashboard_module/common/edit_profile";
 
-const USER_TYPE_CREATOR = 1;
+const USER_TYPE_USER = 0;
 
 const Routing = () => {
-  const { user } = useAuth();
+  const { user, isLoading } = useAuth();
+  const type = user?.userType;
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Routes>
       <Route path="/signup" element={<SignupForm />} />
-      <Route path="/signin" element={<SigninForm />} />
+      {/* <Route path="/signin" element={<SigninForm />} /> */}
       <Route path="/verification" element={<OtpForm />} />
       <Route path="/forgot-password-email" element={<Forgot_password_email />} />
       <Route path="/directive" element={<Directive />} />
       <Route path="/reset-password" element={<Reset_password />} />
       <Route path="/settings-bar" element={<Settings_bar />} />
       <Route path="/report-a-problem" element={<Report_problem />} />
+      {user ? (
+        type === USER_TYPE_USER ? (
+          <Route path="/" element={<UsersDashboard />}>
+            <Route index element={<Home />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="messages" element={<Messages />} />
+            <Route path="settings-page" element={<SettingsPage />} />
 
-      <Route path="/" element={<UsersDashboard />}>
-        <Route index element={<Home />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="messages" element={<Messages />} />
-        <Route path="settings-page" element={<SettingsPage />} />
+            <Route path="events" element={<Events_layout />}>
+              <Route index element={<Events />} />
+              <Route path="my-events" element={<My_events />} />
+            </Route>
 
-        <Route path="events" element={<Events_layout />}>
-          <Route index element={<Events />} />
-          <Route path="my-events" element={<My_events />} />
-        </Route>
-
-        <Route path="event/:id" element={<Event_readmore />} />
-        <Route path="creator-uploads" element={<Creator_uploads />} />
-        <Route path="edit-profile" element={<Edit_profile />} />
-      </Route>
-
-      {user && user.userType === USER_TYPE_CREATOR && (
-        <Route path="/creator" element={<Creator_layout />}>
-          <Route index element={<Creator_home />} />
-          <Route path="creator-profile" element={<Creator_profile />} />
-          <Route path="edit-creator-profile" element={<Edit_creator_profile />} />
-          <Route path="creator-events" element={<Creator_events_layout />}>
-            <Route index element={<All_creator_events />} />
-            <Route path="create-events" element={<Create_events/>}/>
-            <Route path="coming-events" element={<Coming_events/>} />
-            <Route path="edit-event/:id" element={<Edit_event/>} />
-            <Route path="summary" element={<Summary/>} />
+            <Route path="event/:id" element={<Event_readmore />} />
+            <Route path="creator-uploads" element={<Creator_uploads />} />
+            <Route path="edit-profile" element={<Edit_profile />} />
           </Route>
-          <Route path="creator-book-event/:id" element={<Creator_book_event/>} />
-
-          <Route path="creator-settings" element={<Creator_settings />} />
-        </Route>
+        ) : (
+          <Route path="/creator" element={<Creator_layout />}>
+            <Route index element={<Creator_home />} />
+            <Route path="creator-profile" element={<Creator_profile />} />
+            <Route path="edit-creator-profile" element={<Edit_creator_profile />} />
+            <Route path="creator-events" element={<Creator_events_layout />}>
+              <Route index element={<All_creator_events />} />
+              <Route path="create-events" element={<Create_events />} />
+              <Route path="coming-events" element={<Coming_events />} />
+              <Route path="edit-event/:id" element={<Edit_event />} />
+              <Route path="summary" element={<Summary />} />
+            </Route>
+            <Route path="creator-book-event/:id" element={<Creator_book_event />} />
+            <Route path="creator-settings" element={<Creator_settings />} />
+          </Route>
+        )
+      ) : (
+        <Route path="/signin" element={<SigninForm />} />
       )}
-
-      <Route path="*" element={<Navigate to="/" replace />} />
+       <Route path="*" element={<SigninForm />} />
+      {/* <Route path="*" element={user ? <Navigate to="/" replace /> : <SigninForm />} /> */}
     </Routes>
   );
 };

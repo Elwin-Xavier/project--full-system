@@ -131,7 +131,7 @@ const Creator_sidebar = () => {
                             <span>Post</span>
                         </button>
                     </li>
-                    <li className="relative">
+                    {/* <li className="relative">
                         <Link to="/creator/creator-settings"
                             className="focus:bg-gray-100 dark:focus:bg-gray-200 hover:bg-gray-100 dark:hover:bg-gray-200 dark:focus:text-black dark:hover:text-gray-700 flex w-full space-x-2 rounded-md px-10 py-4 focus:outline-none">
                             <span>
@@ -139,7 +139,7 @@ const Creator_sidebar = () => {
                             </span>
                             <span>Settings</span>
                         </Link>
-                    </li>
+                    </li> */}
                     <li className="relative">
                         <Link to='creator-profile'
                             className="focus:bg-gray-100 dark:focus:bg-gray-200 hover:bg-gray-100 dark:hover:bg-gray-200 dark:focus:text-black dark:hover:text-gray-700 flex w-full space-x-2 rounded-md px-10 py-4 focus:outline-none">

@@ -19,13 +19,23 @@ const Report_problem = () => {
     return (
         <div className='dark:bg-black min-h-screen dark:text-white'>
             <div className="relative mx-auto w-full px-5 py-16 sm:px-20 md:max-w-screen-lg lg:py-24">
-                <Link onClick={() => window.history.back()}
-                    className='flex m-5 items-center text-xl '>
-                    <GoArrowLeft className='h-6 w-6 ' />
-                    <span><strong>Back</strong></span>
-                </Link>
-                <h2 className="mb-5 text-4xl text-center font-serif  sm:text-5xl">Have Questions? Checkout these FAQs</h2>
-                <p className="mb-12 text-center text-lg ">We have written down answers to some of the frequently asked questions. But, if you still have any queries, feel free to ping us on chat.</p>
+                <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md">
+                    <div className="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+
+                        <div className="relative flex space-x-7 items-center justify-center">
+                            <button
+                                onClick={() => window.history.back()}
+                                className="sm:block left-0 space-x-2 text-white hover:text-blue-200 transition duration-300 ease-in-out">
+                                <GoArrowLeft className="h-8 w-8" />
+                            </button>
+                            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
+                                Have Questions? Checkout these FAQs
+                            </h1>
+                        </div>
+
+                    </div>
+                </div>
+                <p className="m-2 text-center text-lg ">We have written down answers to some of the frequently asked questions. But, if you still have any queries, feel free to ping us on chat.</p>
                 <ul className="divide-y divide-gray-200">
                     <li className="text-left">
                         <label htmlFor="accordion-1" className="flex flex-col">
@@ -82,7 +92,7 @@ const Report_problem = () => {
                 </ul>
                 <div className="mt-20 flex justify-center">
                     <Link onClick={openForm}
-                        className="inline-flex cursor-pointer rounded-full bg-blue-400 px-5 py-4 text-white">Still have a question? Ping us on chat support
+                        className="inline-flex cursor-pointer rounded-full bg-blue-400 px-5 py-4 text-white">Still have a question? Write us on form support below
                     </Link>
                 </div>
 
@@ -115,10 +125,10 @@ const Report_problem = () => {
                                 <label className="block" htmlFor="Message">
                                     <p className="text-gray-600">Message</p>
                                     <textarea className="h-32 w-full rounded-md border dark:bg-transparent bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
-                                      {...register("message", { required: "Message is required" })}
-                                    type="text" 
-                                    id='Message' 
-                                    placeholder="Write something."></textarea>
+                                        {...register("message", { required: "Message is required" })}
+                                        type="text"
+                                        id='Message'
+                                        placeholder="Write something."></textarea>
                                     {errors.message && <span className='text-red-500'>{errors.message.message}</span>}
                                 </label>
                                 <button className="button mt-4 rounded-full font-semibold text-white">Submit</button>

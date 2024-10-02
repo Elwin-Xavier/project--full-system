@@ -125,9 +125,9 @@ const Creator_home = () => {
             <div className="border-t border-gray-200 p-4 relative">
               <div className="flex items-center">
                 <InputEmoji
-                  background='transparent'
+                  // background='transparent'
                   theme="auto"
-                  className="input-emoji dark:bg-transparent"
+                  className="input-emoji"
                   value={textAreaContent}
                   onChange={setTextAreaContent}
                   placeholder="Type a message"
@@ -203,7 +203,7 @@ const Creator_home = () => {
                     <div className="p-4 border-t border-gray-200 dark:border-gray-700">
                       <div className="flex items-center space-x-3">
                         <InputEmoji
-                          background='transparent'
+                          background="current"
                           border="none"
                           theme="auto"
                           className="input-emoji"
@@ -268,7 +268,7 @@ const Creator_home = () => {
                     <div className="p-4 border-t border-gray-200 dark:border-gray-700">
                       <div className="flex items-center space-x-3">
                         <InputEmoji
-                          background='transparent'
+                          background="current"
                           border="none"
                           theme="auto"
                           className="input-emoji"

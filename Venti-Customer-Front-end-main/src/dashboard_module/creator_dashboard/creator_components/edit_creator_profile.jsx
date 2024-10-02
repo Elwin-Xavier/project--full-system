@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io";
+import { X, AlertCircle, TriangleAlert, Pencil, CircleX, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 import { FaRegEye, FaRegEyeSlash, FaArrowLeft } from "react-icons/fa6";
 import { RiAlertLine, RiAlertFill } from "react-icons/ri";
-import { X, AlertCircle } from 'lucide-react';
+// import { X, AlertCircle } from 'lucide-react';
 import { IoPencil } from "react-icons/io5";
 import { ImCancelCircle } from "react-icons/im";
 import { Success, Error } from '../../../components/toasts';
@@ -21,7 +23,7 @@ const Edit_creator_profile = () => {
     const [changeBio, setChangeBio] = useState(false)
     const [deleteModal, setDeleteModal] = useState(false)
     const navigate = useNavigate()
-    const {setUser} = useAuth()
+    const { setUser } = useAuth()
 
     const [showOldPassword, setShowOldPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -166,19 +168,25 @@ const Edit_creator_profile = () => {
     }
     return (
         <div>
-            <button
-                onClick={() => window.history.back()}
-                className='flex items-center ml-3'>
-                <FaArrowLeft className='h-6 w-6' />
-                <p className='font-bold hover:underline '>Back</p>
-            </button>
             <div className="mx-4 min-h-screen max-w-screen-xl sm:mx-4 xl:mx-auto">
-                <h1 className="border-b py-6 px-6 text-4xl font-semibold">Edit Profile</h1>
-                <div className="grid grid-cols-8 pt-3 sm:grid-cols-10">
-                    <div className="col-span-8 overflow-hidden rounded-xl sm:px-8 ">
-                        <div className="pt-4">
-                            <h1 className="py-2 text-2xl font-semibold">Profile settings</h1>
+                <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md">
+                    <div className="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+                        <div className="relative flex items-center justify-center">
+                            <button
+                                onClick={() => window.history.back()}
+                                className="absolute left-0 flex space-x-2 text-white hover:text-blue-200 transition duration-300 ease-in-out">
+                                <ArrowLeft className="h-5 w-5" />
+                                <span className="font-medium">Back</span>
+                            </button>
+                            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
+                                Edit Profile
+                            </h1>
                         </div>
+                    </div>
+                </div>
+                <div className="mt-8 bg-white dark:bg-gray-950 shadow-xl rounded-lg overflow-hidden">
+                    <div className="px-4 py-5 sm:p-6">
+                        <h2 className="text-lg font-bold leading-6 text-gray-900 dark:text-white">Profile Settings</h2>
                         <hr className="mt-4 mb-8" />
                         <p className="py-2 text-xl font-semibold">Name</p>
                         {!changeName ? (
@@ -187,7 +195,7 @@ const Edit_creator_profile = () => {
                                 <button
                                     onClick={edit_name}
                                     className="inline-flex text-sm font-semibold text-blue-600 underline decoration-2">
-                                    <span><IoPencil /></span>Edit</button>
+                                    <span><Pencil className='h-4 w-4' /></span>Edit</button>
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit(update_name)}>
@@ -214,7 +222,7 @@ const Edit_creator_profile = () => {
                                         <button
                                             onClick={() => setChangeName(false)}
                                             className="border flex items-center text-red-500 space-x-2 px-2 rounded-lg dark:hover:bg-red-100 hover:bg-red-100">
-                                            <ImCancelCircle className='mr-2' />
+                                            <CircleX className='mr-2' />
                                             Cancel
                                         </button>
                                     </div>
@@ -230,7 +238,7 @@ const Edit_creator_profile = () => {
                                 <button
                                     onClick={() => setChangeBio(true)}
                                     className="inline-flex text-sm font-semibold text-blue-600 underline decoration-2">
-                                    <span><IoPencil /></span>Edit</button>
+                                    <span><Pencil className='h-4 w-4' /></span>Edit</button>
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit(update_bio)}>
@@ -242,7 +250,7 @@ const Edit_creator_profile = () => {
                                                 id="bio"
                                                 type="text"
                                                 className="w-full rounded-lg dark:bg-transparent dark:text-white text-black border border-gray-700 p-2 pe-12 text-sm shadow-sm"
-                                                defaultValue={userData.bio || ''}
+                                                defaultValue={userData.bio}
                                                 {...register("bio", {
                                                     required: "Profile Bio is required",
                                                 })}
@@ -257,7 +265,7 @@ const Edit_creator_profile = () => {
                                         <button
                                             onClick={() => setChangeBio(false)}
                                             className="border flex items-center text-red-500 space-x-2 px-2 rounded-lg dark:hover:bg-red-100 hover:bg-red-100">
-                                            <ImCancelCircle className='mr-2' />
+                                            <CircleX className='mr-2' />
                                             Cancel
                                         </button>
                                     </div>
@@ -273,7 +281,7 @@ const Edit_creator_profile = () => {
                                 <button
                                     onClick={edit_email}
                                     className="inline-flex text-sm font-semibold text-blue-600 underline decoration-2">
-                                    <span><IoPencil /></span>Edit</button>
+                                    <span><Pencil className='h-4 w-4' /></span>Edit</button>
                             </div>
                         ) : (
                             // <form onSubmit={handleSubmit(update_email)}>
@@ -299,7 +307,7 @@ const Edit_creator_profile = () => {
                                     <button
                                         onClick={() => setChangeEmail(false)}
                                         className="border flex items-center text-red-500 space-x-2 px-2 rounded-lg dark:hover:bg-red-100 hover:bg-red-100">
-                                        <ImCancelCircle className='mr-2' />
+                                        <CircleX className='mr-2' />
                                         Cancel
                                     </button>
                                 </div>
@@ -314,7 +322,7 @@ const Edit_creator_profile = () => {
                                 <button
                                     onClick={edit_phone}
                                     className="inline-flex text-sm font-semibold text-blue-600 underline decoration-2">
-                                    <span><IoPencil /></span>Edit</button>
+                                    <span><Pencil className='w-4 h-4' /></span>Edit</button>
                             </div>
                         ) : (
                             <div className="items-center space-y-3 ">
@@ -338,7 +346,7 @@ const Edit_creator_profile = () => {
                                     <button
                                         onClick={() => setChangePhone(false)}
                                         className="border flex items-center text-red-500 space-x-2 px-2 rounded-lg dark:hover:bg-red-100 hover:bg-red-100">
-                                        <ImCancelCircle className='mr-2' />
+                                        <CircleX className='mr-2' />
                                         Cancel
                                     </button>
                                 </div>
@@ -354,7 +362,7 @@ const Edit_creator_profile = () => {
                                     <button
                                         onClick={edit_password}
                                         className="inline-flex text-sm font-semibold text-blue-600 underline decoration-2">
-                                        <span className=''><IoPencil /></span>Edit</button>
+                                        <span className=''><Pencil className='w-4 h-4' /></span>Edit</button>
                                 </div>
                             </>
                         ) : (
@@ -377,9 +385,9 @@ const Edit_creator_profile = () => {
                                                     className="absolute inset-y-0 end-0 grid place-content-center px-4"
                                                 >
                                                     {showOldPassword ? (
-                                                        <FaRegEye className="text-gray-600" />
+                                                        <Eye className="text-gray-600 h-4 w-4" />
                                                     ) : (
-                                                        <FaRegEyeSlash className="text-gray-600" />
+                                                        <EyeOff className="text-gray-600 h-4 w-4" />
                                                     )}
                                                 </button>
                                             </div>
@@ -405,9 +413,9 @@ const Edit_creator_profile = () => {
                                                     className="absolute inset-y-0 end-0 grid place-content-center px-4"
                                                 >
                                                     {showNewPassword ? (
-                                                        <FaRegEye className="text-gray-600" />
+                                                        <Eye className="text-gray-600 h-4 w-4" />
                                                     ) : (
-                                                        <FaRegEyeSlash className="text-gray-600" />
+                                                        <EyeOff className="text-gray-600 h-4 w-4" />
                                                     )}
                                                 </button>
                                             </div>
@@ -431,9 +439,9 @@ const Edit_creator_profile = () => {
                                                     className="absolute inset-y-0 end-0 grid place-content-center px-4"
                                                 >
                                                     {showConfirmPassword ? (
-                                                        <FaRegEye className="text-gray-600" />
+                                                        <Eye className="text-gray-600 h-4 w-4" />
                                                     ) : (
-                                                        <FaRegEyeSlash className="text-gray-600" />
+                                                        <EyeOff className="text-gray-600 h-4 w-4" />
                                                     )}
                                                 </button>
                                             </div>
@@ -446,7 +454,7 @@ const Edit_creator_profile = () => {
                                         <button
                                             onClick={() => close_edit_password()}
                                             className="border flex items-center text-red-500 space-x-2 px-2 rounded-lg dark:hover:bg-red-100 hover:bg-red-100">
-                                            <ImCancelCircle className='mr-2' />
+                                            <CircleX className='mr-2' />
                                             Cancel
                                         </button>
                                     </div>
@@ -460,11 +468,11 @@ const Edit_creator_profile = () => {
                         <div className="mb-10">
                             <p className="py-2 text-xl font-semibold">Delete Account</p>
                             <p className="inline-flex items-center rounded-full bg-rose-100 px-4 py-1 text-rose-600">
-                                <RiAlertLine className="mr-2 h-5 w-5" />
+                                <TriangleAlert className="mr-2 h-5 w-5" />
                                 Proceed with caution
                             </p>
                             <p className="mt-2">Make sure you have taken backup of your account in case you ever need to get access to your data. We will completely wipe your data. There is no way to access your account after this action.</p>
-                            <button onClick={() => setDeleteModal(true)} className="ml-auto text-sm font-semibold text-rose-600 underline decoration-2">Continue with deletion</button>
+                            <Link onClick={() => setDeleteModal(true)} className="ml-auto cursor-pointer text-sm font-semibold text-rose-600 underline decoration-2">Continue with deletion</Link>
                         </div>
                         {deleteModal && (
                             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">

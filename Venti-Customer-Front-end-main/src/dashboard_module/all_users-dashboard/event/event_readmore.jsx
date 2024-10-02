@@ -121,7 +121,7 @@ const Event_readmore = () => {
                 <div className=" mb-8 lg:order-1 lg:mb-0 lg:w-1/3">
                     <img
                         loading='lazy'
-                        className="border-blue-600/10 border shadow-md w-full h-auto"
+                        className="border-blue-600/10 object-cover max-w-[300px] border shadow-md h-auto"
                         src={event.poster}
                         alt={event.eventName}
                     />

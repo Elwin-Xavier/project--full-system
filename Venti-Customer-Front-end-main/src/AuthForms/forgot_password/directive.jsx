@@ -16,7 +16,9 @@ const Directive = () => {
     }, [navigate]);
 
     return (
-        <div className="flex items-center justify-center min-h-screen"   style={{ backgroundImage: `url(${imageData('login')})` }}>
+        <div className="flex items-center justify-center min-h-screen bg-no-repeat bg-cover bg-center"
+        style={{ backgroundImage: `url(${imageData('login')})` }}>
+            <div className="absolute inset-0 bg-black opacity-60"></div>
             <div className="mx-auto my-10 max-w-xl rounded-xl px-4 py-6 text-gray-50">
                 <div className="mb-5"></div>
                 <div className="mb-3 text-3xl">
